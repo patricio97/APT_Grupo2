@@ -1,0 +1,7 @@
+{
+  "name": "barbersync_App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
