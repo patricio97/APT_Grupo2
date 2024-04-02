@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'registro-cliente',
     loadChildren: () => import('./registro-cliente/registro-cliente.module').then( m => m.RegistroClientePageModule)
+  },  {
+    path: 'home1',
+    loadChildren: () => import('./home1/home1.module').then( m => m.Home1PageModule)
   }
+
 ];
 
 @NgModule({
