@@ -18,6 +18,26 @@ const routes: Routes = [
   {
     path: 'registro',
     loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'logi',
+    loadChildren: () => import('./login_registro_barbero/logi/logi.module').then( m => m.LogiPageModule)
+  },
+  {
+    path: 'login-barbero',
+    loadChildren: () => import('./login-barbero/login-barbero.module').then( m => m.LoginBarberoPageModule)
+  },
+  {
+    path: 'registro-barbero',
+    loadChildren: () => import('./registro-barbero/registro-barbero.module').then( m => m.RegistroBarberoPageModule)
+  },
+  {
+    path: 'login-cliente',
+    loadChildren: () => import('./login-cliente/login-cliente.module').then( m => m.LoginClientePageModule)
+  },
+  {
+    path: 'registro-cliente',
+    loadChildren: () => import('./registro-cliente/registro-cliente.module').then( m => m.RegistroClientePageModule)
   }
 ];
 
