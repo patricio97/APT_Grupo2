@@ -49,6 +49,7 @@
     "@capacitor/cli": "5.7.4",
     "@ionic/angular-toolkit": "^9.0.0",
     "@types/jasmine": "~5.1.0",
+    "@types/oracledb": "^6.3.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^7.26.0",
@@ -64,12 +65,12 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.2.2"
   },
-    "oracle": {
-      "host": "localhost",
-      "port": "1521",
-      "user": "USUARIO_PATRICIO",
-      "password": "Sebastian_10"
-    },
+  "oracle": {
+    "host": "localhost",
+    "port": "1521",
+    "user": "USUARIO_PATRICIO",
+    "password": "Sebastian_10"
+  },
   "description": "An Ionic project",
   "main": "karma.conf.js",
   "keywords": [],

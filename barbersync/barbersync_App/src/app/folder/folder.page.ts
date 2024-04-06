@@ -1,5 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+// Importa el cliente Oracle
+import * as oracle from 'oracledb';
+
 
 @Component({
   selector: 'app-folder',
