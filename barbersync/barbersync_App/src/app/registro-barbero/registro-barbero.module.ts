@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
-
 import { RegistroBarberoPageRoutingModule } from './registro-barbero-routing.module';
-
-import { RegistroBarberoPage } from './registro-barbero.page';
+import { RegistroBarberoComponent } from './registro-barbero.page';
+import { FuncionesRegistroService } from '../funciones-registro.service';
 
 @NgModule({
   imports: [
@@ -15,6 +13,7 @@ import { RegistroBarberoPage } from './registro-barbero.page';
     IonicModule,
     RegistroBarberoPageRoutingModule
   ],
-  declarations: [RegistroBarberoPage]
+  declarations: [RegistroBarberoComponent],
+  providers: [FuncionesRegistroService]
 })
 export class RegistroBarberoPageModule {}
