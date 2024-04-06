@@ -60,10 +60,10 @@ export class FuncionesRegistroService {
   }
 
   validarClave(clave: string) {
-    // Validar que la clave cumpla con los requisitos (1 mayúscula, 1 caracter especial, 1 número)
-    const regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_\-])[A-Za-z\d!@#$%^&*_\-]{8,}$/;
     return regex.test(clave);
   }
+  
 
   validarCorreo(correo: string) {
     // Validar que el correo tenga el formato adecuado

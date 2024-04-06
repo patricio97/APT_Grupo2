@@ -25,6 +25,12 @@ export class RegistroBarberoComponent implements OnInit {
       return;
     }
 
+    // Verificar la contraseña nuevamente antes de registrar al barbero
+    if (!this.funcionesRegistroService.validarClave(this.repetirContrasena)) {
+      alert('La contraseña de confirmación no cumple con los requisitos mínimos');
+      return;
+    }
+
     if (!this.funcionesRegistroService.verificarDisponibilidadUsuario(this.usuario)) {
       alert('El usuario ya está en uso');
       return;
@@ -59,6 +65,6 @@ export class RegistroBarberoComponent implements OnInit {
     alert('Barbero registrado exitosamente');
 
     // Redirigir a otra página después del registro
-    this.router.navigate(['/otra-pagina']);
+    this.router.navigate(['/login-barbero']);
   }
 }
