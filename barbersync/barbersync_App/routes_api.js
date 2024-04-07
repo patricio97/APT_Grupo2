@@ -1,7 +1,7 @@
 module.exports = function(app){
 
-    app.get('/', (req, res) => {
+    app.get('/', (request, response) => {
         response.json({"mensaje":"rodo bien"});
     });
 
-}
+};
