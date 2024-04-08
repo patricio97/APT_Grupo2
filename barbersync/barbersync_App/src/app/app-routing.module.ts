@@ -50,7 +50,27 @@ const routes: Routes = [
   {
     path: 'intro',
     loadChildren: () => import('./page/intro/intro.module').then( m => m.IntroPageModule)
+  },  {
+    path: 'add-barberia',
+    loadChildren: () => import('./page/barberia/add-barberia/add-barberia.module').then( m => m.AddBarberiaPageModule)
+  },
+  {
+    path: 'detail-barberia',
+    loadChildren: () => import('./page/barberia/detail-barberia/detail-barberia.module').then( m => m.DetailBarberiaPageModule)
+  },
+  {
+    path: 'update-barberia',
+    loadChildren: () => import('./page/barberia/update-barberia/update-barberia.module').then( m => m.UpdateBarberiaPageModule)
+  },
+  {
+    path: 'delet-barberia',
+    loadChildren: () => import('./page/barberia/delet-barberia/delet-barberia.module').then( m => m.DeletBarberiaPageModule)
+  },
+  {
+    path: 'list-barberia',
+    loadChildren: () => import('./page/barberia/list-barberia/list-barberia.module').then( m => m.ListBarberiaPageModule)
   }
+
 
 
 ];

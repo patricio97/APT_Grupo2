@@ -4,13 +4,15 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <strong>BARBERSYNC</strong>
+      <strong>Barberias</strong>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  <div class="glass-content"></div>
-  
+  <ion-list class="glass-content">
+    <ion-item *ngFor="let b of barberias; let indexArray = index">
+      <ion-label> {{ b }} </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
