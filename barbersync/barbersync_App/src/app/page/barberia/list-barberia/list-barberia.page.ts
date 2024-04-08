@@ -9,7 +9,8 @@ import { ServiceBarberriaService } from 'src/app/services/service-barberria.serv
 })
 export class ListBarberiaPage {
 
-  barberias = []
+  barberias: any[] = [];
+
 
   constructor(private barberiaSer:ServiceBarberriaService, private loadingCrt:LoadingController) { }
 

@@ -12,7 +12,8 @@
 <ion-content>
   <ion-list class="glass-content">
     <ion-item *ngFor="let b of barberias; let indexArray = index">
-      <ion-label> {{ b }} </ion-label>
+      <ion-label> {{ b.nombre }} - {{ b.direccion }} </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
+
