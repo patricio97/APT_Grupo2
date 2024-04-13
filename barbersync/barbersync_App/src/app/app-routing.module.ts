@@ -12,16 +12,8 @@ const routes: Routes = [
     loadChildren: () => import('./login-barbero/login-barbero.module').then( m => m.LoginBarberoPageModule)
   },
   {
-    path: 'registro-barbero',
-    loadChildren: () => import('./registro-barbero/registro-barbero.module').then( m => m.RegistroBarberoPageModule)
-  },
-  {
     path: 'login-cliente',
     loadChildren: () => import('./login-cliente/login-cliente.module').then( m => m.LoginClientePageModule)
-  },
-  {
-    path: 'registro-cliente',
-    loadChildren: () => import('./registro-cliente/registro-cliente.module').then( m => m.RegistroClientePageModule)
   },
   {
     path: 'home1',
@@ -50,7 +42,8 @@ const routes: Routes = [
   {
     path: 'intro',
     loadChildren: () => import('./page/intro/intro.module').then( m => m.IntroPageModule)
-  },  {
+  },
+  {
     path: 'add-barberia',
     loadChildren: () => import('./page/barberia/add-barberia/add-barberia.module').then( m => m.AddBarberiaPageModule)
   },
