@@ -12,7 +12,7 @@ export class ListBarberiaPage {
   barberias: any[] = [];
 
 
-  constructor(private barberiaSer:ServiceBarberriaService, private loadingCrt:LoadingController) { }
+  constructor(private barberiaServ:ServiceBarberriaService, private loadingCrt:LoadingController) { }
 
   ionViewWillEnter(){
     this.loadbarberias()
@@ -26,7 +26,7 @@ export class ListBarberiaPage {
     );
     await loading.present();
 
-    this.barberiaSer.listarBarberias().subscribe(
+    this.barberiaServ.listarBarberias().subscribe(
       (resp) => {
         loading.dismiss();
         let listString = JSON.stringify(resp)

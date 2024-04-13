@@ -13,19 +13,19 @@
   <form class="glass-content">
     <ion-item lines="full">
       <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text" name="txNombre" required></ion-input>
+      <ion-input type="text" name="txNombre" [(ngModel)]="newBarberia.nombre" required></ion-input>
     </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Direccion</ion-label>
-      <ion-input type="text" name="txDireccion" required></ion-input>
+      <ion-input type="text" name="txDireccion" [(ngModel)]="newBarberia.direccion" required></ion-input>
     </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Horario</ion-label>
-      <ion-input type="text" name="txHorario" required></ion-input>
+      <ion-input type="text" name="txHorario" [(ngModel)]="newBarberia.horario" required></ion-input>
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button expand="block" color="success" size="small">Agregar</ion-button>
+        <ion-button (click)="crearBarberia()" expand="block" color="success" size="small">Agregar</ion-button>
       </ion-col>
     </ion-row>
   </form>
