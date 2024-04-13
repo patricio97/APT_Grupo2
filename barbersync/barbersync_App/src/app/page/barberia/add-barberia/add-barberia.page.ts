@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddBarberiaPage implements OnInit {
 
+  newBarberia 
+
   constructor() { }
 
   ngOnInit() {
