@@ -20,4 +20,9 @@ export class ServiceBarberriaService {
     return this.http.post<Ibarberia>(`${environment.apiUrl}/barberias`, newBarberia)
   }
 
+  getBarberiaByID(id:number):Observable<InterBarberia>{
+    
+    return this.http.get<InterBarberia>(`${environment.apiUrl}/barberias/?id=${id}`)
+  }
+
 }
