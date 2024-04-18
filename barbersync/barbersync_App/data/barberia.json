@@ -1,22 +1,40 @@
 {
-    "barberias" : [
-        {
-            "id": 1,
-            "nombre": "BarberiaPrueba",
-            "direccion": "El Rosal",
-            "horario": "Lunes a Viernes de 09:00 a 22:00 hrs"
-        },
-        {
-            "id": 2,
-            "nombre": "BarberiaPrueba2",
-            "direccion": "El Rosal 2",
-            "horario": "Lunes a Viernes de 09:00 a 21:00 hrs"
-        },
-        {
-            "id": 3,
-            "nombre": "BarberiaPrueba3",
-            "direccion": "El Rosal 3",
-            "horario": "Lunes a Viernes de 09:00 a 21:00 hrs"
-        }
-    ]
+  "barberias": [
+    {
+      "id": "1",
+      "nombre": "BarberiaPrueba",
+      "direccion": "El Rosal",
+      "horario": "Lunes a Viernes de 09:00 a 22:00 hrs"
+    },
+    {
+      "id": "2",
+      "nombre": "BarberiaPrueba2",
+      "direccion": "El Rosal 2",
+      "horario": "Lunes a Viernes de 09:00 a 21:00 hrs"
+    },
+    {
+      "id": "3",
+      "nombre": "BarberiaPrueba3",
+      "direccion": "El Rosal 3",
+      "horario": "Lunes a Viernes de 09:00 a 21:00 hrs"
+    },
+    {
+      "id": "573d",
+      "nombre": "asd",
+      "direccion": "asd",
+      "horario": "asd"
+    },
+    {
+      "id": "5a25",
+      "nombre": "asd",
+      "direccion": "asd",
+      "horario": "asd"
+    },
+    {
+      "id": "d419",
+      "nombre": "qwe",
+      "direccion": "qwe",
+      "horario": "qwe"
+    }
+  ]
 }

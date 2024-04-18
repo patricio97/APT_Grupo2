@@ -6,12 +6,15 @@
     <ion-title>
       <strong>Barberias</strong>
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="'/add-barberia'">Agregar</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list class="glass-content">
-    <ion-item *ngFor="let b of barberias; let indexArray = index">
+    <ion-item *ngFor="let b of barberias; let indexArray = index" [routerLink]="['/detail-barberia',b.id]">
       <ion-label> {{ b.nombre }} - {{ b.direccion }} </ion-label>
     </ion-item>
   </ion-list>
