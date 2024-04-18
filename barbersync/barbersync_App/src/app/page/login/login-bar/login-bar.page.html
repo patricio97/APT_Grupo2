@@ -1,13 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>login_bar</ion-title>
+    <ion-title>Iniciar sesión (Barberos)</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">login_bar</ion-title>
+      <ion-title size="large">Iniciar sesión (Barberos)</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Iniciar sesión</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nombre de usuario</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" (click)="iniciarSesion">Iniciar sesión</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" routerLink="/registro-bar">¿No tienes una cuenta? Regístrate aquí</ion-button>
 </ion-content>
