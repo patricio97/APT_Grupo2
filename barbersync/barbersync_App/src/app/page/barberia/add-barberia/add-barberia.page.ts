@@ -11,9 +11,9 @@ import { ServiceBarberriaService } from 'src/app/services/service-barberria.serv
 export class AddBarberiaPage{
 
   newBarberia:Ibarberia = {
-    nombre: "Nombre barberia",
-    direccion: "Direccion",
-    horario: "Horario"
+    nombre: "",
+    direccion: "",
+    horario: ""
   }
 
   constructor(private barberiaServ:ServiceBarberriaService,private router:Router) 
