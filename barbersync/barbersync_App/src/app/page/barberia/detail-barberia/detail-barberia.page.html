@@ -14,5 +14,10 @@
       <strong>{{ barberia.direccion }}</strong>
       <strong>{{ barberia.horario }}</strong>
     </ion-card-content>
+  
+    <ion-button [routerLink]="['/update-barberia',barberia.id]" color="warning"><ion-icon name="create"></ion-icon></ion-button>
+    <ion-button [routerLink]="['/delet-barberia',barberia.id]"color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+  
   </ion-card>
+
 </ion-content>

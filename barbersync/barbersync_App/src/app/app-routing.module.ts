@@ -52,11 +52,11 @@ const routes: Routes = [
     loadChildren: () => import('./page/barberia/detail-barberia/detail-barberia.module').then( m => m.DetailBarberiaPageModule)
   },
   {
-    path: 'update-barberia',
+    path: 'update-barberia/:id',
     loadChildren: () => import('./page/barberia/update-barberia/update-barberia.module').then( m => m.UpdateBarberiaPageModule)
   },
   {
-    path: 'delet-barberia',
+    path: 'delet-barberia/:id',
     loadChildren: () => import('./page/barberia/delet-barberia/delet-barberia.module').then( m => m.DeletBarberiaPageModule)
   },
   {

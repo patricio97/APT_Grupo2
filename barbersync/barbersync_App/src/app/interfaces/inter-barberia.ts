@@ -1,5 +1,5 @@
 export interface InterBarberia {
-    id: Number,
+    id: number,
     nombre: String,
     direccion: String,
     horario: String

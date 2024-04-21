@@ -21,8 +21,15 @@ export class ServiceBarberriaService {
   }
 
   getBarberiaByID(id:number):Observable<InterBarberia>{
-    
     return this.http.get<InterBarberia>(`${environment.apiUrl}/barberias/?id=${id}`)
+  }
+
+  actualizarBarberia(barberia:any):Observable<InterBarberia>{
+    return this.http.put<InterBarberia>(`${environment.apiUrl}/barberias/${barberia.id}`, barberia)
+  }
+
+  eliminarBarberia(barberia:any):Observable<InterBarberia>{
+    return this.http.delete<InterBarberia>(`${environment.apiUrl}/barberias/${barberia.id}`)
   }
 
 }
