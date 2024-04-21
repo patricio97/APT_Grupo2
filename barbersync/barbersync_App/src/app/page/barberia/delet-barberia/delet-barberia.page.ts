@@ -10,7 +10,7 @@ import { ServiceBarberriaService } from 'src/app/services/service-barberria.serv
 export class DeletBarberiaPage{
 
   barberia = {
-    id: 0,
+    id: "",
     nombre: "",
     direccion: "",
     horario: ""
@@ -30,7 +30,7 @@ export class DeletBarberiaPage{
     return id
   }
 
-  getBarberiaByID(barberiaID:number){
+  getBarberiaByID(barberiaID:any){
     this.barberiaServ.getBarberiaByID(barberiaID).subscribe(
       (resp:any) => {
         this.barberia = {

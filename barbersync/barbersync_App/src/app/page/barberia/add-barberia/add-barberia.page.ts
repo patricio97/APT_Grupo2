@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ibarberia } from 'src/app/interfaces/ibarberia';
 import { ServiceBarberriaService } from 'src/app/services/service-barberria.service';
@@ -8,7 +8,7 @@ import { ServiceBarberriaService } from 'src/app/services/service-barberria.serv
   templateUrl: './add-barberia.page.html',
   styleUrls: ['./add-barberia.page.scss'],
 })
-export class AddBarberiaPage{
+export class AddBarberiaPage {
 
   newBarberia:Ibarberia = {
     nombre: "",

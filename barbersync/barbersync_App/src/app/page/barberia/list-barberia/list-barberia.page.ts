@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { InfiniteScrollCustomEvent, LoadingController } from '@ionic/angular';
 import { ServiceBarberriaService } from 'src/app/services/service-barberria.service';
 
@@ -9,10 +9,15 @@ import { ServiceBarberriaService } from 'src/app/services/service-barberria.serv
 })
 export class ListBarberiaPage {
 
-  barberias: any[] = [];
+  barberias = [{
+    id: "",
+    nombre: "",
+    direccion: "",
+    horario: ""
+  }]
 
 
-  constructor(private barberiaServ:ServiceBarberriaService, private loadingCrt:LoadingController) { }
+  constructor(private barberiasServ:ServiceBarberriaService, private loadingCrt:LoadingController) { }
 
   ionViewWillEnter(){
     this.loadbarberias()
@@ -26,15 +31,12 @@ export class ListBarberiaPage {
     );
     await loading.present();
 
-    this.barberiaServ.listarBarberias().subscribe(
+    this.barberiasServ.listarBarberias().subscribe(
       (resp) => {
         loading.dismiss();
         let listString = JSON.stringify(resp)
         this.barberias = JSON.parse(listString)
-        event?.target.complete();
-      },
-      (err) => {
-        console.log(err.message);
+        event?.target.complete()
       }
     )
   }

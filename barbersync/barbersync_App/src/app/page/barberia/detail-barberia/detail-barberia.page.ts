@@ -10,7 +10,7 @@ import { ServiceBarberriaService } from 'src/app/services/service-barberria.serv
 export class DetailBarberiaPage {
 
   barberia = {
-    id: 0,
+    id: "",
     nombre: "",
     direccion: "",
     horario: ""
