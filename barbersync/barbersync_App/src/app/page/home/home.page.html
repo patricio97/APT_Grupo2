@@ -1,16 +1,22 @@
-<ion-header mode="md">
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      <strong>BARBERSYNC</strong>
-    </ion-title>
+    <ion-title>Bienvenido</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-  <div class="glass-content"></div>
-  
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center">
+        <!-- Logo de la aplicación -->
+        <img src="assets/logo.png" alt="Logo" style="width: 150px; height: 150px;">
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button expand="block" routerLink="/login-cli">Iniciar sesión como Cliente</ion-button>
+        <ion-button expand="block" routerLink="/login-bar">Iniciar sesión como Barbero</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

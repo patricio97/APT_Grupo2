@@ -1,71 +1,29 @@
-
-import { Component, OnInit } from '@angular/core';
-import { FuncionesRegistroService } from 'src/app/services/registro-funciones/funciones-registro.service';
+import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { Barbero } from 'src/app/interfaces/models';
 
 @Component({
   selector: 'app-registro-bar',
   templateUrl: './registro-bar.page.html',
   styleUrls: ['./registro-bar.page.scss'],
 })
-export class RegistroBarComponent implements OnInit {
-  usuario: string = '';
-  contrasena: string = '';
-  repetirContrasena: string = '';
-  correo: string = '';
-  nombre: string = '';
-  apellido: string = '';
+export class RegistroBarPage {
+  barbero: Barbero = {
+    username: '',
+    correo: '',
+    password: ''
+  };
 
-  constructor(private funcionesRegistroService: FuncionesRegistroService, private router: Router) { }
-
-  ngOnInit() {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   registrarBarbero() {
-    if (this.contrasena !== this.repetirContrasena) {
-      alert('La contraseña y su repetición no coinciden');
-      return;
+    try {
+      this.authService.registrarBarbero(this.barbero);
+      this.router.navigate(['/perfil-barbero']); // Asume que hay una página de perfil de barbero
+      alert('Registro exitoso. Bienvenido a la comunidad de barberos!');
+    } catch (error: any) {
+      alert(error.message);
     }
-
-    // Verificar la contraseña nuevamente antes de registrar al barbero
-    if (!this.funcionesRegistroService.validarClave(this.repetirContrasena)) {
-      alert('La contraseña de confirmación no cumple con los requisitos mínimos');
-      return;
-    }
-
-    if (!this.funcionesRegistroService.verificarDisponibilidadUsuario(this.usuario)) {
-      alert('El usuario ya está en uso');
-      return;
-    }
-
-    if (!this.funcionesRegistroService.verificarDisponibilidadEmail(this.correo)) {
-      alert('El correo electrónico ya está en uso');
-      return;
-    }
-
-    if (!this.funcionesRegistroService.validarClave(this.contrasena)) {
-      alert('La contraseña no cumple con los requisitos mínimos');
-      return;
-    }
-
-    if (!this.funcionesRegistroService.validarCorreo(this.correo)) {
-      alert('El formato del correo electrónico no es válido');
-      return;
-    }
-
-    const barberoData = {
-      username: this.usuario,
-      password: this.contrasena,
-      email: this.correo,
-      nombre: this.nombre,
-      apellido: this.apellido
-    };
-
-    // Registrar barbero utilizando el servicio
-    this.funcionesRegistroService.registrarBarbero(barberoData);
-    
-    alert('Barbero registrado exitosamente');
-
-    // Redirigir a otra página después del registro
-    this.router.navigate(['/login-barbero']);
   }
 }

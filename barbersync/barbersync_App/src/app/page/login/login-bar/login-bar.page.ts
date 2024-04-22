@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FuncionesLoginService } from 'src/app/services/login-funciones/funciones-login.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,22 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-bar.page.scss'],
 })
 export class LoginBarPage {
+  usuario: string = '';
+  contrasena: string = '';
 
-  constructor(private funcionesLoginService: FuncionesLoginService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  iniciarSesion(usuario: string, contraseña: string) {
-    const usuarioData = { username: usuario, password: contraseña };
-    const tipoUsuario = this.funcionesLoginService.autenticarUsuario(usuarioData);
-    if (tipoUsuario === 'barbero') {
-      // Autenticación exitosa como barbero, redirigir a la página correspondiente
+  iniciarSesion() {
+    const loginExitoso = this.authService.loginBarbero(this.usuario, this.contrasena);
+    if (loginExitoso) {
       this.router.navigate(['/perfil-barbero']);
-    } else if (tipoUsuario === 'cliente') {
-      // Autenticación exitosa como cliente, redirigir a la página correspondiente
-      this.router.navigate(['/perfil-cliente']);
     } else {
-      // Credenciales incorrectas, mostrar mensaje de error
-      alert('Credenciales incorrectas. Por favor, inténtelo de nuevo.');
+      alert('Credenciales incorrectas o acceso no permitido para clientes en este portal.');
     }
   }
-
 }

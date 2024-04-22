@@ -2,12 +2,12 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegistroBarComponent } from './registro-bar.page';
+import { RegistroBarPage } from './registro-bar.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: RegistroBarComponent
+    component: RegistroBarPage
   }
 ];
 
