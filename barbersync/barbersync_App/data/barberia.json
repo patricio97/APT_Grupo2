@@ -11,6 +11,24 @@
       "nombre": "Nombre barberia",
       "direccion": "Direccion",
       "horario": "Horario"
+    },
+    {
+      "id": "c35c",
+      "nombre": "sadas",
+      "direccion": "asdasd",
+      "horario": "asdasda"
+    },
+    {
+      "id": "4895",
+      "nombre": "weqeqe",
+      "direccion": "qweqweqwe",
+      "horario": "qweqweqwe"
+    },
+    {
+      "id": "cea4",
+      "nombre": "zxczxcz",
+      "direccion": "zxczc",
+      "horario": "zxczc"
     }
   ]
 }

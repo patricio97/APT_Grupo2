@@ -25,71 +25,107 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+ion-button {
+    text-transform: none;
+}
 
-.glass-content {
-    background: rgba(19, 63, 176, 0.27);
-    box-shadow: 0 4px 30px rgba(7, 77, 216, 0.1);
-    backdrop-filter: blur(25.3px);
-    -webkit-backdrop-filter: blur(25.3px);
-    width: 100%;
-    min-height: 100vh;
+// safe padding for ios
+.safe-p-bottom{
+    padding-bottom: constant(safe-area-inset-bottom); // for ios 13+
+    padding-bottom: env(safe-area-inset-bottom); // for previous ios versions
+}
+
+.submit {
+    margin-top: 40px;
+}
+
+.empty {
+    text-align: center;
+    padding: 60px;
+    opacity: 30%;
+
+    ion-icon {
+        font-size: 100px;
+    }
 }
 
 .d-flex-center {
     display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-ion-content {
-    --ion-background-color: url(/assets/img/red-blue.gif);
-    --color: white;
-}
-
-ion-header {
-    background: url(/assets/img/red-blue.gif);
-}
-
-ion-toolbar {
-    --background: transparent;
-    background: rgba(19, 63, 176, 0.27);
-    box-shadow: 0 4px 30px rgba(7, 77, 216, 0.1);
-    backdrop-filter: blur(25.3px);
-    -webkit-backdrop-filter: blur(25.3px);
-    color: white;
+    align-items: center;
 }
 
 
-ion-card {
-    margin: 20px;
-    background: rgba(7, 7, 7, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-}
+.custom-input {
+    --border-color: #e0e0e0;
+    --border-radius: 15px;
+    --border-style: solid;
+    --border-width: 1px;
+    margin: 20px 0;
 
-ion-item {
-    --background: transparent;
-    color: white;
-}
+    ion-label {
+        position: relative;
+        bottom: 2px;
+    }
 
-ion-icon {
-    color: white;
-}
-
-.loader {
-    text-align: center;
-    padding-top: 15vh;
-
-    ion-spinner {
-        padding: 50px;
-        --color: white;
+    .eye-icon {
+        position: relative;
+        top: 13px;
     }
 }
 
-p{
-    font-size: 1em;
+.validators {
+    color: var(--ion-color-danger);
+    font-size: 13px;
+    text-align: center;
+}
+
+
+.auth-form {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.product-item {
+    --padding-top: 20px;
+
+    ion-avatar {
+        width: 70px;
+        height: 80px;
+        --border-radius: 15px;
+    }
+
+    .name {
+        font-weight: 600;
+        padding-bottom: 5px;
+    }
+
+    .data {
+        font-size: 13px;
+
+        strong {
+            font-weight: 500;
+        }
+    }
+
+    .option-btn {
+        font-size: 27px;
+    }
+
+    ion-chip {
+        font-size: 14px;
+        border-radius: 10px;
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 769px) {
+    .auth-form {
+        width: 500px;
+    }
+
+    .add-update-modal {
+        --height: 680px;
+    }
 }
