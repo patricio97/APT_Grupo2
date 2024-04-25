@@ -8,14 +8,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'login-barbero',
-    loadChildren: () => import('./login-barbero/login-barbero.module').then( m => m.LoginBarberoPageModule)
-  },
-  {
-    path: 'login-cliente',
-    loadChildren: () => import('./login-cliente/login-cliente.module').then( m => m.LoginClientePageModule)
-  },
-  {
     path: 'home1',
     loadChildren: () => import('./home1/home1.module').then( m => m.Home1PageModule)
   },
