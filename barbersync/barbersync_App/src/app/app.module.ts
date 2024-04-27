@@ -10,24 +10,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 
-
-// === FireBase ===
-import { AngularFireModule } from '@angular/fire/compat';
-import { environment } from 'src/environments/environment';
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(), 
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
   enabled: !isDevMode(),
   // Register the ServiceWorker as soon as the application is stable
   // or after 30 seconds (whichever comes first).
-  registrationStrategy: 'registerWhenStable:30000'
+  registrationStrategy: 'registerWhenStable:3000'
 })],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
