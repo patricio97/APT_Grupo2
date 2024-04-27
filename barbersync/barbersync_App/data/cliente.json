@@ -1,0 +1,13 @@
+{
+    "cliente":{
+        "username": "patricio",
+        "password": "Sebastian_10",
+        "correo": "plagos97@gmail.com",
+        "barberias": {
+            "id": "1",
+            "nombre": "BarberiaPrueba",
+            "direccion": "El Rosal",
+            "horario": "Lunes a Viernes de 09:00 a 22:00 hrs"
+        }
+    }
+}

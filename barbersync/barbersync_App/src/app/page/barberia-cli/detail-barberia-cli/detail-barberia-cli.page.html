@@ -3,23 +3,19 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>detail_barberia</ion-title>
+    <ion-title>💈 {{barberia.nombre}} 💈</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-card >
-    <ion-card-header>
-      <ion-card-title>{{ barberia.nombre }}</ion-card-title>
-    </ion-card-header>
     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
     <ion-card-content>
       <strong>{{ barberia.direccion }}</strong>
       <strong>{{ barberia.horario }}</strong>
+      <ion-chip color="primary">hora</ion-chip>
     </ion-card-content>
   
-    <ion-button [routerLink]="['/update-barberia',barberia.id]" color="warning"><ion-icon name="create"></ion-icon></ion-button>
-    <ion-button [routerLink]="['/delet-barberia',barberia.id]"color="danger"><ion-icon name="trash"></ion-icon></ion-button>
   
   </ion-card>
 

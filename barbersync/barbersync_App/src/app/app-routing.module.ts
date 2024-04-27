@@ -54,7 +54,12 @@ const routes: Routes = [
   {
     path: 'list-barberia',
     loadChildren: () => import('./page/barberia/list-barberia/list-barberia.module').then( m => m.ListBarberiaPageModule)
+  },
+  {
+    path: 'detail-barberia-cli/:id',
+    loadChildren: () => import('./page/barberia-cli/detail-barberia-cli/detail-barberia-cli.module').then( m => m.DetailBarberiaCliPageModule)
   }
+
 
 
 
