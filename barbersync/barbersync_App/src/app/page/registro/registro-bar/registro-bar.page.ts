@@ -19,8 +19,12 @@ export class RegistroBarPage {
 
   registrarBarbero() {
     try {
+      if (!this.barbero.username.trim()) {
+        throw new Error('Por favor, ingresa un nombre de usuario.');
+      }
+
       this.authService.registrarBarbero(this.barbero);
-      this.router.navigate(['/perfil-barbero']); // Asume que hay una página de perfil de barbero
+      this.router.navigate(['/login-bar']); // Redirige al login de barbero
       alert('Registro exitoso. Bienvenido a la comunidad de barberos!');
     } catch (error: any) {
       alert(error.message);

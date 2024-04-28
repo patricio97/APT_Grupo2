@@ -19,9 +19,13 @@ export class RegistroCliPage {
 
   registrarCliente() {
     try {
+      if (!this.cliente.username.trim()) {
+        throw new Error('Por favor, ingresa un nombre de usuario.');
+      }
+
       this.authService.registrarCliente(this.cliente);
-      this.router.navigate(['/perfil-cliente']); // Redirige al perfil del cliente
-      alert('Registro exitoso. Bienvenido a nuestra comunidad!');
+      this.router.navigate(['/login-cli']); // Redirige al login de cliente
+      alert('Registro exitoso. ¡Bienvenido a nuestra comunidad!');
     } catch (error: any) {
       alert(error.message);
     }
