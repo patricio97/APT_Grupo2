@@ -1,3 +1,5 @@
+// login-bar.component.ts
+
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
@@ -8,18 +10,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-bar.page.scss'],
 })
 export class LoginBarPage {
-  correo: string = ''; // Cambia 'usuario' a 'correo'
+  correo: string = '';
   contrasena: string = '';
 
   constructor(private authService: AuthService, private router: Router) { }
 
   iniciarSesion() {
-    const loginExitoso = this.authService.loginBarbero(this.correo, this.contrasena);
-    if (loginExitoso) {
-      this.router.navigate(['/perfil-barbero']);
-      alert('Inicio de sesión exitoso como barbero.');
-    } else {
-      alert('Credenciales incorrectas o acceso no permitido para clientes en este portal.');
-    }
+    this.authService.loginBarbero(this.correo, this.contrasena).subscribe(
+      loginExitoso => {
+        if (loginExitoso) {
+          this.router.navigate(['/perfil-barbero']);
+          alert('Inicio de sesión exitoso como barbero.');
+        } else {
+          alert('Credenciales incorrectas o acceso no permitido para clientes en este portal.');
+        }
+      },
+      error => {
+        alert('Error al iniciar sesión como barbero.');
+      }
+    );
   }
 }

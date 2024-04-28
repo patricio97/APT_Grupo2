@@ -1,3 +1,5 @@
+// login-cli.component.ts
+
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
@@ -15,11 +17,18 @@ export class LoginCliPage {
   constructor(private authService: AuthService, private router: Router) { }
 
   iniciarSesion() {
-    const loginExitoso = this.authService.loginCliente(this.correo, this.contrasena);
-    if (loginExitoso) {
-      this.router.navigate(['/home1']); // Redirige al home1 después del inicio de sesión exitoso
-    } else {
-      this.mensajeError = 'Correo o contraseña incorrectos.';
-    }
+    this.authService.loginCliente(this.correo, this.contrasena).subscribe(
+      loginExitoso => {
+        if (loginExitoso) {
+          this.router.navigate(['/home1']);
+          alert('Inicio de sesión exitoso como cliente.');
+        } else {
+          this.mensajeError = 'Correo o contraseña incorrectos.';
+        }
+      },
+      error => {
+        alert('Error al iniciar sesión como cliente.');
+      }
+    );
   }
 }

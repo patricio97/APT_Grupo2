@@ -1,64 +1,61 @@
 import { Injectable } from '@angular/core';
-import { Cliente, Barbero } from 'src/app/interfaces/models';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError, map } from 'rxjs/operators'; // Importa 'map' desde 'rxjs/operators'
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private router: Router) { }
+  private baseUrl = 'http://localhost:3000'; // Ruta base del servidor JSON Server
 
-  registrarCliente(clienteData: Cliente) {
-    let clientes: Cliente[] = JSON.parse(localStorage.getItem('clientes') || '[]');
-    if (clientes.some(cliente => cliente.correo === clienteData.correo)) {
-      throw new Error('Un cliente con este correo ya está registrado.');
-    }
-    if (!this.validarCorreo(clienteData.correo)) {
-      throw new Error('El formato del correo electrónico es incorrecto.');
-    }
-    if (!this.validarClave(clienteData.password)) {
-      throw new Error('La contraseña no cumple con los requisitos de seguridad.');
-    }
-    clientes.push(clienteData);
-    localStorage.setItem('clientes', JSON.stringify(clientes));
-    this.router.navigate(['/login-cli']);
-    alert('Registro exitoso. Bienvenido a nuestra comunidad!');
+  constructor(private http: HttpClient, private router: Router) { }
+
+  registrarCliente(clienteData: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/clientes`, clienteData).pipe(
+      catchError(error => {
+        throw new Error('Error al registrar el cliente.');
+      }),
+      map(() => {
+        this.router.navigate(['/login-cli']);
+        alert('Registro exitoso. Bienvenido a nuestra comunidad como cliente!');
+        return null;
+      })
+    );
   }
 
-  registrarBarbero(barberoData: Barbero) {
-    let barberos: Barbero[] = JSON.parse(localStorage.getItem('barberos') || '[]');
-    if (barberos.some(barbero => barbero.correo === barberoData.correo)) {
-      throw new Error('Un barbero con este correo ya está registrado.');
-    }
-    if (!this.validarCorreo(barberoData.correo)) {
-      throw new Error('El formato del correo electrónico es incorrecto.');
-    }
-    if (!this.validarClave(barberoData.password)) {
-      throw new Error('La contraseña no cumple con los requisitos de seguridad.');
-    }
-    barberos.push(barberoData);
-    localStorage.setItem('barberos', JSON.stringify(barberos));
-    this.router.navigate(['/login-bar']);
-    alert('Registro exitoso. Bienvenido a la comunidad de barberos!');
+  registrarBarbero(barberoData: any): Observable<any> {
+    return this.http.post(`${environment.apiUrl}/barberos`, barberoData).pipe(
+      catchError(error => {
+        throw new Error('Error al registrar el barbero.');
+      }),
+      map(() => {
+        this.router.navigate(['/login-bar']);
+        alert('Registro exitoso. Bienvenido a la comunidad de barberos!');
+        return null;
+      })
+    );
   }
 
-  loginCliente(correo: string, password: string): boolean {
-    const clientes: Cliente[] = JSON.parse(localStorage.getItem('clientes') || '[]');
-    const loginExitoso = clientes.some(cliente => cliente.correo === correo && cliente.password === password);
-    if (loginExitoso) {
-      alert('Inicio de sesión exitoso como cliente.');
-    }
-    return loginExitoso;
+  loginCliente(correo: string, password: string): Observable<boolean> {
+    return this.http.post<any[]>(`${environment.apiUrl}/clientes/login`, { correo, password }).pipe(
+      map(clientes => clientes.length > 0), // Utiliza 'map' para transformar la respuesta en un booleano
+      catchError(error => {
+        throw new Error('Error al iniciar sesión como cliente.');
+      })
+    );
   }
 
-  loginBarbero(correo: string, password: string): boolean {
-    const barberos: Barbero[] = JSON.parse(localStorage.getItem('barberos') || '[]');
-    const loginExitoso = barberos.some(barbero => barbero.correo === correo && barbero.password === password);
-    if (loginExitoso) {
-      alert('Inicio de sesión exitoso como barbero.');
-    }
-    return loginExitoso;
+  loginBarbero(correo: string, password: string): Observable<boolean> {
+    return this.http.post<any[]>(`${environment.apiUrl}/barberos/login`, { correo, password }).pipe(
+      map(barberos => barberos.length > 0), // Utiliza 'map' para transformar la respuesta en un booleano
+      catchError(error => {
+        throw new Error('Error al iniciar sesión como barbero.');
+      })
+    );
   }
 
   validarClave(clave: string): boolean {

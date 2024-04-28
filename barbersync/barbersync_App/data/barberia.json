@@ -1,34 +1,49 @@
 {
+  "clientes": [
+    {
+      "id": "1",
+      "username": "cliente1",
+      "password": "contraseña",
+      "correo": "cliente1@example.com"
+    }
+  ],
+  "barberos": [
+    {
+      "id": "1",
+      "username": "barbero1",
+      "password": "contraseña",
+      "correo": "barbero1@example.com"
+    }
+  ],
+  "horarios": [
+    {
+      "id": "h100",
+      "barberoId": "1",
+      "fecha": "2024-04-30",
+      "horaInicio": "09:00",
+      "horaFin": "10:00",
+      "reservado": true,
+      "clienteId": "1",
+      "servicio": "Corte de cabello",
+      "precio": 20
+    },
+    {
+      "id": "h101",
+      "barberoId": "1",
+      "fecha": "2024-04-30",
+      "horaInicio": "10:00",
+      "horaFin": "11:00",
+      "reservado": false,
+      "servicio": "Barba",
+      "precio": 15
+    }
+  ],
   "barberias": [
     {
       "id": "1",
       "nombre": "BarberiaPrueba",
       "direccion": "El Rosal",
       "horario": "Lunes a Viernes de 09:00 a 22:00 hrs"
-    },
-    {
-      "id": "2",
-      "nombre": "Nombre barberia",
-      "direccion": "Direccion",
-      "horario": "Horario"
-    },
-    {
-      "id": "c35c",
-      "nombre": "sadas",
-      "direccion": "asdasd",
-      "horario": "asdasda"
-    },
-    {
-      "id": "4895",
-      "nombre": "weqeqe",
-      "direccion": "qweqweqwe",
-      "horario": "qweqweqwe"
-    },
-    {
-      "id": "cea4",
-      "nombre": "zxczxcz",
-      "direccion": "zxczc",
-      "horario": "zxczc"
     }
   ]
 }
