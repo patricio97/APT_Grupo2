@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
   // or after 30 seconds (whichever comes first).
   registrationStrategy: 'registerWhenStable:3000'
 })],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, SQLite],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

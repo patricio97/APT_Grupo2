@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InfiniteScrollCustomEvent, LoadingController } from '@ionic/angular';
+import { BdserviceService } from 'src/app/services/bdservice.service';
 import { ServiceBarberriaService } from 'src/app/services/service-barberria.service';
 
 @Component({
@@ -7,17 +8,12 @@ import { ServiceBarberriaService } from 'src/app/services/service-barberria.serv
   templateUrl: './list-barberia.page.html',
   styleUrls: ['./list-barberia.page.scss'],
 })
-export class ListBarberiaPage {
+export class ListBarberiaPage implements OnInit {
 
-  barberias = [{
-    id: "",
-    nombre: "",
-    direccion: "",
-    horario: ""
-  }]
+  barberias: any;
 
 
-  constructor(private barberiasServ:ServiceBarberriaService, private loadingCrt:LoadingController) { }
+  constructor(private barberiasServ:ServiceBarberriaService, private loadingCrt:LoadingController, private bd: BdserviceService) { }
 
   ionViewWillEnter(){
     this.loadbarberias()
@@ -39,5 +35,15 @@ export class ListBarberiaPage {
         event?.target.complete()
       }
     )
+  }
+
+  ngOnInit(){
+    this.bd.dbState().subscribe(res=>{
+      if(res){
+        this.bd.fetchBarberia().subscribe(data=>{
+          this.barberias = data;
+        })
+      }
+    })
   }
 }

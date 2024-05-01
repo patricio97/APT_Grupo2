@@ -10,12 +10,12 @@ import { environment } from '../../../environments/environment';
 })
 export class AuthService {
 
-  private baseUrl = 'http://localhost:3000'; // Ruta base del servidor JSON Server
+  private baseUrl = 'http://localhost:3300'; // Ruta base del servidor JSON Server
 
   constructor(private http: HttpClient, private router: Router) { }
 
   registrarCliente(clienteData: any): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/clientes`, clienteData).pipe(
+    return this.http.post(this.baseUrl + '/clientes', clienteData).pipe(
       catchError(error => {
         throw new Error('Error al registrar el cliente.');
       }),
@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   registrarBarbero(barberoData: any): Observable<any> {
-    return this.http.post(`${environment.apiUrl}/barberos`, barberoData).pipe(
+    return this.http.post(this.baseUrl + '/barberos', barberoData).pipe(
       catchError(error => {
         throw new Error('Error al registrar el barbero.');
       }),
@@ -41,7 +41,7 @@ export class AuthService {
   }
 
   loginCliente(correo: string, password: string): Observable<boolean> {
-    return this.http.post<any[]>(`${environment.apiUrl}/clientes/login`, { correo, password }).pipe(
+    return this.http.post<any[]>(this.baseUrl + '/clientes/login', { correo, password }).pipe(
       map(clientes => clientes.length > 0), // Utiliza 'map' para transformar la respuesta en un booleano
       catchError(error => {
         throw new Error('Error al iniciar sesión como cliente.');
@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   loginBarbero(correo: string, password: string): Observable<boolean> {
-    return this.http.post<any[]>(`${environment.apiUrl}/barberos/login`, { correo, password }).pipe(
+    return this.http.post<any[]>(this.baseUrl + '/barberos/login', { correo, password }).pipe(
       map(barberos => barberos.length > 0), // Utiliza 'map' para transformar la respuesta en un booleano
       catchError(error => {
         throw new Error('Error al iniciar sesión como barbero.');
@@ -66,4 +66,5 @@ export class AuthService {
     const regex = /^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
     return regex.test(correo);
   }
+  
 }

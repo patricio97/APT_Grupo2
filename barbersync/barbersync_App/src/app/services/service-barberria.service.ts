@@ -10,26 +10,28 @@ import { Ibarberia } from '../interfaces/ibarberia';
 })
 export class ServiceBarberriaService {
 
+  apiUrl: string = "http://localhost:3300";
+
   constructor(private http:HttpClient) { }
 
   listarBarberias() :Observable<InterBarberia>{
-    return this.http.get<InterBarberia>(`${environment.apiUrl}/barberias`)
+    return this.http.get<InterBarberia>(this.apiUrl +'/barberias')
   }
 
   crearBarberia(newBarberia:Ibarberia) :Observable<Ibarberia>{
-    return this.http.post<Ibarberia>(`${environment.apiUrl}/barberias`, newBarberia)
+    return this.http.post<Ibarberia>(this.apiUrl +'/barberias', newBarberia)
   }
 
   getBarberiaByID(id:number):Observable<InterBarberia>{
-    return this.http.get<InterBarberia>(`${environment.apiUrl}/barberias/?id=${id}`)
+    return this.http.get<InterBarberia>(this.apiUrl +'/barberias?id=${id}')
   }
 
   actualizarBarberia(barberia:any):Observable<InterBarberia>{
-    return this.http.put<InterBarberia>(`${environment.apiUrl}/barberias/${barberia.id}`, barberia)
+    return this.http.put<InterBarberia>(this.apiUrl +'/barberias/' + barberia.id, barberia)
   }
 
   eliminarBarberia(barberia:any):Observable<InterBarberia>{
-    return this.http.delete<InterBarberia>(`${environment.apiUrl}/barberias/${barberia.id}`)
+    return this.http.delete<InterBarberia>(this.apiUrl +'/barberias/' + barberia.id)
   }
 
 }
