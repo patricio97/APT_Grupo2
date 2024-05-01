@@ -1,0 +1,80 @@
+-- Tabla para almacenar información de los países
+CREATE TABLE Pais (
+    id_pais INT PRIMARY KEY,
+    nombre VARCHAR(100)
+);
+
+-- Tabla para almacenar información de las regiones
+CREATE TABLE Region (
+    id_region INT PRIMARY KEY,
+    id_pais INT,
+    nombre VARCHAR(100),
+    FOREIGN KEY (id_pais) REFERENCES Pais(id_pais)
+);
+
+-- Tabla para almacenar información de las provincias
+CREATE TABLE Provincia (
+    id_provincia INT PRIMARY KEY,
+    id_region INT,
+    nombre VARCHAR(100),
+    FOREIGN KEY (id_region) REFERENCES Region(id_region)
+);
+
+-- Tabla para almacenar información de las comunas
+CREATE TABLE Comuna (
+    id_comuna INT PRIMARY KEY,
+    id_provincia INT,
+    nombre VARCHAR(100),
+    FOREIGN KEY (id_provincia) REFERENCES Provincia(id_provincia)
+);
+
+-- Tabla para almacenar información de la barbería
+CREATE TABLE Barberia (
+    id_barberia INT PRIMARY KEY,
+    nombre VARCHAR(100),
+    direccion VARCHAR(255),
+    telefono VARCHAR(15),
+    id_comuna INT,
+    FOREIGN KEY (id_comuna) REFERENCES Comuna(id_comuna)
+);
+
+-- Tabla para almacenar información de los clientes
+CREATE TABLE Cliente (
+    id_cliente INT PRIMARY KEY,
+    id_barberia INT,
+    nombre VARCHAR(100),
+    telefono VARCHAR(15),
+    email VARCHAR(100),
+    FOREIGN KEY (id_barberia) REFERENCES Barberia(id_barberia)
+);
+
+-- Tabla para almacenar información de los barberos
+CREATE TABLE Barbero (
+    id_barbero INT PRIMARY KEY,
+    id_barberia INT,
+    nombre VARCHAR(100),
+    telefono VARCHAR(15),
+    email VARCHAR(100),
+    FOREIGN KEY (id_barberia) REFERENCES Barberia(id_barberia)
+);
+
+-- Tabla para almacenar las horas disponibles de los barberos
+CREATE TABLE HorasDisponibles (
+    id_hora INT PRIMARY KEY,
+    id_barbero INT,
+    fecha DATE,
+    hora TIME,
+    disponible BOOLEAN,
+    FOREIGN KEY (id_barbero) REFERENCES Barbero(id_barbero)
+);
+
+-- Tabla para registrar los pagos de los clientes
+CREATE TABLE RegistroPago (
+    id_pago INT PRIMARY KEY,
+    id_cliente INT,
+    id_barbero INT,
+    fecha DATE,
+    monto DECIMAL(10, 2),
+    FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente),
+    FOREIGN KEY (id_barbero) REFERENCES Barbero(id_barbero)
+);
