@@ -1,44 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InfiniteScrollCustomEvent, LoadingController } from '@ionic/angular';
 import { ServiceBarberriaService } from 'src/app/services/service-barberria.service';
+import { BdserviceService } from '../services/bdservice.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home1',
   templateUrl: './home1.page.html',
   styleUrls: ['./home1.page.scss'],
 })
-export class Home1Page{
+export class Home1Page implements OnInit{
 
-  barberias = [{
-    id: "",
-    nombre: "",
-    direccion: "",
-    horario: ""
-  }]
+  barberia: any = [
+    {
+    idbarberia: '',
+    nombre: '',
+    direccion: '',
+    telefono: '',
+    fkidcomuna: ''
+    }
+  ]
 
 
-  constructor(private barberiasServ:ServiceBarberriaService, private loadingCrt:LoadingController) { }
+  constructor(private router: Router,private bdservice: BdserviceService) { }
 
-  ionViewWillEnter(){
-    this.loadbarberias()
+  ngOnInit() {
+    this.bdservice.dbState().subscribe(resp => {
+      if (resp) {
+        this.bdservice.fetchBarberia().subscribe( item => {
+          this.barberia = item;
+        })
+      }
+    })
   }
 
-  async loadbarberias(event?: InfiniteScrollCustomEvent){
-    const loading = await this.loadingCrt.create({
-        message: "Cargando...",
-        spinner: "bubbles"
-      }
-    );
-    await loading.present();
 
-    this.barberiasServ.listarBarberias().subscribe(
-      (resp) => {
-        loading.dismiss();
-        let listString = JSON.stringify(resp)
-        this.barberias = JSON.parse(listString)
-        event?.target.complete()
-      }
-    )
-  }
+
 }
 

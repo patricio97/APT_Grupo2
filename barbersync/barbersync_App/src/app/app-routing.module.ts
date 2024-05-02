@@ -16,14 +16,6 @@ const routes: Routes = [
     loadChildren: () => import('./page/home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'registro-cli',
-    loadChildren: () => import('./page/registro/registro-cli/registro-cli.module').then( m => m.RegistroCliPageModule)
-  },
-  {
-    path: 'registro-bar',
-    loadChildren: () => import('./page/registro/registro-bar/registro-bar.module').then( m => m.RegistroBarPageModule)
-  },
-  {
     path: 'login-cli',
     loadChildren: () => import('./page/login/login-cli/login-cli.module').then( m => m.LoginCliPageModule)
   },
@@ -55,11 +47,6 @@ const routes: Routes = [
     path: 'list-barberia',
     loadChildren: () => import('./page/barberia/list-barberia/list-barberia.module').then( m => m.ListBarberiaPageModule)
   },
-  {
-    path: 'detail-barberia-cli/:id',
-    loadChildren: () => import('./page/barberia-cli/detail-barberia-cli/detail-barberia-cli.module').then( m => m.DetailBarberiaCliPageModule)
-  }
-
 
 
 
