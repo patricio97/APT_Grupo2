@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class Home1Page implements OnInit{
 
-  barberia: any = [
+  arreglobarberia: any = [
     {
     idbarberia: '',
     nombre: '',
@@ -28,7 +28,7 @@ export class Home1Page implements OnInit{
     this.bdservice.dbState().subscribe(resp => {
       if (resp) {
         this.bdservice.fetchBarberia().subscribe( item => {
-          this.barberia = item;
+          this.arreglobarberia = item;
         })
       }
     })

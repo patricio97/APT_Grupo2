@@ -24,7 +24,7 @@ export class BdserviceService {
   tablaCliente: string = "CREATE TABLE IF NOT EXISTS cliente(idcliente INTEGER PRIMARY KEY autoincrement, nombrecliente VARCHAR(40) NOT NULL, telefonocliente VARCHAR(15), emailcliente VARCHAR(100));";
   tablaBarbero: string = "CREATE TABLE IF NOT EXISTS barbero(idbarbero INTEGER PRIMARY KEY autoincrement, nombrebarbero VARCHAR(30) NOT NULL, telefonobarbero VARCHAR(15), emailbarbero VARCHAR(100), fkidbarberia INTEGER, FOREIGN KEY(fkidbarberia) REFERENCES barberia(idbarberia));";
   tablaHorasDisponibles: string = "CREATE TABLE IF NOT EXISTS horasdisponibles(idhora INTEGER PRIMARY KEY autoincrement, fecha DATE, hora TIME, disponible BOOLEAN, fkidbarbero INTEGER, FOREIGN KEY(fkidbarbero) REFERENCES barbero(idbarbero));";
-  tablaRegistroPago: string = "CREATE TABLE IF NOT EXISTS registropago(id_pago INTEGER PRIMARY KEY autoincrement, fecha DATE, monto INTEGER, fkidcliente INTEGER, fkidbarbero INTEGER, FOREIGN KEY(fkidcliente) REFERENCES cliente(idcliente), FOREIGN KEY(fkidbarbero) REFERENCES barbero(idbarbero));";
+  tablaRegistroPago: string = "CREATE TABLE IF NOT EXISTS registropago(id_pago INTEGER PRIMARY KEY autoincrement, fecha DATE, monto INTEGER, fkidcliente INTEGER, FOREIGN KEY(fkidcliente) REFERENCES cliente(idcliente));";
 
   //primer registro
   registroBarberia: string = "INSERT or IGNORE INTO barberia(nombre,direccion,telefono,fkidcomuna) VALUES ('PRIMERA BARBERIA','EL ROSAL 1','99999999','PLAGOS97@GMAIL.COM');";
