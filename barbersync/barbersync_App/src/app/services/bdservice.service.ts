@@ -23,8 +23,8 @@ export class BdserviceService {
   tablaBarberia: string = "CREATE TABLE IF NOT EXISTS barberia(idbarberia INTEGER PRIMARY KEY autoincrement, nombre VARCHAR(100), direccion VARCHAR(255), telefono VARCHAR(15), fkidcomuna INTEGER, FOREIGN KEY(fkidcomuna) REFERENCES comuna(idcomuna));";
   tablaCliente: string = "CREATE TABLE IF NOT EXISTS cliente(idcliente INTEGER PRIMARY KEY autoincrement, nombrecliente VARCHAR(40) NOT NULL, telefonocliente VARCHAR(15), emailcliente VARCHAR(100));";
   tablaBarbero: string = "CREATE TABLE IF NOT EXISTS barbero(idbarbero INTEGER PRIMARY KEY autoincrement, nombrebarbero VARCHAR(30) NOT NULL, telefonobarbero VARCHAR(15), emailbarbero VARCHAR(100), fkidbarberia INTEGER, FOREIGN KEY(fkidbarberia) REFERENCES barberia(idbarberia));";
-  tablaHorasDisponibles: string = "CREATE TABLE IF NOT EXISTS horasdisponibles(idhora INTEGER PRIMARY KEY autoincrement, fecha DATE, hora TIME, disponible BOOLEAN, FOREIGN KEY (idbarbero) REFERENCES barbero(idbarbero));";
-  tablaRegistroPago: string = "CREATE TABLE IF NOT EXISTS registropago(id_pago INT PRIMARY KEY autoincrement, fecha DATE, monto INTEGER, FOREIGN KEY (idcliente) REFERENCES cliente(idcliente), FOREIGN KEY (idbarbero) REFERENCES barbero(idbarbero));";
+  tablaHorasDisponibles: string = "CREATE TABLE IF NOT EXISTS horasdisponibles(idhora INTEGER PRIMARY KEY autoincrement, fecha DATE, hora TIME, disponible BOOLEAN, fkidbarbero INTEGER, FOREIGN KEY(fkidbarbero) REFERENCES barbero(idbarbero));";
+  tablaRegistroPago: string = "CREATE TABLE IF NOT EXISTS registropago(id_pago INTEGER PRIMARY KEY autoincrement, fecha DATE, monto INTEGER, fkidcliente INTEGER, fkidbarbero INTEGER, FOREIGN KEY(fkidcliente) REFERENCES cliente(idcliente), FOREIGN KEY(fkidbarbero) REFERENCES barbero(idbarbero));";
 
   //primer registro
   registroBarberia: string = "INSERT or IGNORE INTO barberia(nombre,direccion,telefono,fkidcomuna) VALUES ('PRIMERA BARBERIA','EL ROSAL 1','99999999','PLAGOS97@GMAIL.COM');";
@@ -95,9 +95,10 @@ export class BdserviceService {
       }).then((db:SQLiteObject) =>{
         this.database = db;
         //llamamos a la funcion que crea las tablas
+        this.crearTablas();
       })
     }).catch(e =>{
-      this.presentAlert("Error en BD:" + e);
+      this.presentAlert("Error en BD:" + JSON.stringify(e));
     })
 
   }
@@ -118,7 +119,7 @@ export class BdserviceService {
 
 
     }catch(e){
-      this.presentAlert("Error en Tablas:" + e)
+      this.presentAlert("Error en Tablas:" + JSON.stringify(e))
     }
   };
 
@@ -164,18 +165,5 @@ export class BdserviceService {
     })
   };
 
-  //metodos cliente
-  insertCliente(nombrecliente:string, telefonocliente:string, emailcliente:string){
-    return this.database.executeSql('INSERT INTO cliente(nombrecliente,telefonocliente,emailcliente) VALUES(?,?,?)',[nombrecliente,telefonocliente,emailcliente]).then(res=>{
-      this.presentAlert("Cliente Registrado");
-    })
-  }
-
-  modificarCliente(idcliente:number, nombrecliente:string, telefonocliente:string, emailcliente:string){
-    return this.database.executeSql('SELECT * FROM cliente WHERE idcliente = ?', [nombrecliente,telefonocliente,emailcliente,idcliente]).then(res=>{
-      this.presentAlert("Barberia Actualizada");
-    })
-  }
-  
 
 }
